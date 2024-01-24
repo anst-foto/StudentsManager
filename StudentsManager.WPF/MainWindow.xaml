@@ -6,7 +6,17 @@
         xmlns:local="clr-namespace:StudentsManager.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <DockPanel LastChildFill="True">
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Выйти" />
+            <MenuItem Header="Редактирование">
+                <MenuItem Header="Добавить" />
+                <MenuItem Header="Сохранить" />
+                <MenuItem Header="Удалить" />
+                <MenuItem Header="Очистить" />
+            </MenuItem>
+        </Menu>
 
-    </Grid>
+
+    </DockPanel>
 </Window>
