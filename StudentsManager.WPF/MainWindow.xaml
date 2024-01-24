@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentsManager.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="350" Width="600">
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Выйти" />
@@ -17,6 +17,52 @@
             </MenuItem>
         </Menu>
 
-
+        <ToolBar DockPanel.Dock="Top"></ToolBar>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            
+            <ListBox Grid.Column="0"></ListBox>
+            
+            <StackPanel Grid.Column="1"
+                        Orientation="Vertical">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Фамилия"
+                               Target="InputLastName"/>
+                        <TextBox x:Name="InputLastName"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Имя"
+                               Target="InputFirstName"/>
+                        <TextBox x:Name="InputFirstName"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Дата рождения"
+                               Target="InputDateOfBirth"/>
+                        <DatePicker x:Name="InputDateOfBirth"/>
+                        <TextBlock x:Name="InputAge"/>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Факультет"
+                               Target="InputFaculty"/>
+                        <TextBox x:Name="InputFaculty"/>
+                    </StackPanel>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Добавить"></Button>
+                    <Button Content="Сохранить"></Button>
+                    <Button Content="Удалить"></Button>
+                    <Button Content="Очистить"></Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </DockPanel>
 </Window>
