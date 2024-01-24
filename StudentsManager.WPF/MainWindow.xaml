@@ -5,9 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StudentsManager.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="600">
+        Title="MainWindow" 
+        Height="450" Width="675">
+    
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowStyles.xaml"/>
+    </Window.Resources>
+    
     <DockPanel LastChildFill="True">
-        <Menu DockPanel.Dock="Top">
+        <Menu DockPanel.Dock="Top"
+              Style="{StaticResource StyleDefault}">
             <MenuItem Header="Выйти" />
             <MenuItem Header="Редактирование">
                 <MenuItem Header="Добавить" />
@@ -17,7 +24,8 @@
             </MenuItem>
         </Menu>
 
-        <ToolBar DockPanel.Dock="Top"></ToolBar>
+        <ToolBar DockPanel.Dock="Top"
+                 Style="{StaticResource StyleDefault}"></ToolBar>
         
         <Grid>
             <Grid.ColumnDefinitions>
@@ -25,42 +33,57 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             
-            <ListBox Grid.Column="0"></ListBox>
+            <ListBox Grid.Column="0"
+                     Style="{StaticResource StyleDefault}"></ListBox>
             
             <StackPanel Grid.Column="1"
                         Orientation="Vertical">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Фамилия"
-                               Target="InputLastName"/>
-                        <TextBox x:Name="InputLastName"/>
+                               Target="InputLastName"
+                               Style="{StaticResource StyleLabel}"/>
+                        <TextBox x:Name="InputLastName"
+                                 Style="{StaticResource StyleInput}"/>
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Имя"
-                               Target="InputFirstName"/>
-                        <TextBox x:Name="InputFirstName"/>
+                               Target="InputFirstName"
+                               Style="{StaticResource StyleLabel}"/>
+                        <TextBox x:Name="InputFirstName"
+                                 Style="{StaticResource StyleInput}"/>
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Дата рождения"
-                               Target="InputDateOfBirth"/>
-                        <DatePicker x:Name="InputDateOfBirth"/>
-                        <TextBlock x:Name="InputAge"/>
+                               Target="InputDateOfBirth"
+                               Style="{StaticResource StyleLabel}"/>
+                        <DatePicker x:Name="InputDateOfBirth"
+                                    Style="{StaticResource StyleDefault}"/>
+                        <TextBox x:Name="InputAge"
+                                 IsEnabled="False"
+                                 Style="{StaticResource StyleInputAge}"/>
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Факультет"
-                               Target="InputFaculty"/>
-                        <TextBox x:Name="InputFaculty"/>
+                               Target="InputFaculty"
+                               Style="{StaticResource StyleLabel}"/>
+                        <TextBox x:Name="InputFaculty"
+                                 Style="{StaticResource StyleInput}"/>
                     </StackPanel>
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Добавить"></Button>
-                    <Button Content="Сохранить"></Button>
-                    <Button Content="Удалить"></Button>
-                    <Button Content="Очистить"></Button>
+                    <Button Content="Добавить"
+                            Style="{StaticResource StyleButtonNew}"></Button>
+                    <Button Content="Сохранить"
+                            Style="{StaticResource StyleButtonSave}"></Button>
+                    <Button Content="Удалить"
+                            Style="{StaticResource StyleButtonDelete}"></Button>
+                    <Button Content="Очистить"
+                            Style="{StaticResource StyleButtonClear}"></Button>
                 </StackPanel>
             </StackPanel>
         </Grid>
