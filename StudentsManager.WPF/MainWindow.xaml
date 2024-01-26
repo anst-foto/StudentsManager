@@ -6,10 +6,15 @@
         xmlns:local="clr-namespace:StudentsManager.WPF"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="450" Width="675">
+        Height="450" Width="900">
     
     <Window.Resources>
-        <ResourceDictionary Source="MainWindowStyles.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MainWindowStyles.xaml"/>
+                <ResourceDictionary Source="MainWindowIcons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Window.Resources>
     
     <DockPanel LastChildFill="True">
@@ -76,10 +81,33 @@
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Добавить"
-                            Style="{StaticResource StyleButtonNew}"></Button>
-                    <Button Content="Сохранить"
-                            Style="{StaticResource StyleButtonSave}"></Button>
+                    <Button Style="{StaticResource StyleButtonNew}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="24"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <ContentControl Grid.Column="0"
+                                            Content="{StaticResource IconButtonNew}"/>
+                            <ContentControl Grid.Column="1" 
+                                            Content="Добавить"
+                                            Style="{StaticResource StyleMarginLeftRight}"/>
+                        </Grid>
+                    </Button>
+                    <Button Style="{StaticResource StyleButtonSave}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="24"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            
+                            <Image Grid.Column="0" Source="Icons/icon_button_new.png"/>
+                            <ContentControl Grid.Column="1" 
+                                            Content="Сохранить"
+                                            Style="{StaticResource StyleMarginLeftRight}"/>
+                        </Grid>
+                    </Button>
                     <Button Content="Удалить"
                             Style="{StaticResource StyleButtonDelete}"></Button>
                     <Button Content="Очистить"

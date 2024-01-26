@@ -8,11 +8,15 @@
         <Setter Property="Padding" Value="5"/>
     </Style>
     
+    <Style x:Key="StyleMarginLeftRight" TargetType="{x:Type Control}">
+        <Setter Property="Margin" Value="10, 0"/>
+    </Style>
+    
     <!-- #region BUTTONS -->
     <Style x:Key="StyleButtonDefault" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleDefault}">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Width" Value="100"/>
+        <Setter Property="Width" Value="150"/>
     </Style>
     
     <Style x:Key="StyleButtonNew" TargetType="{x:Type Button}"
