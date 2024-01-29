@@ -15,25 +15,73 @@
     <!-- #region BUTTONS -->
     <Style x:Key="StyleButtonDefault" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleDefault}">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Width" Value="150"/>
+        <Style.Setters>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Width" Value="150"/>
+            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderThickness="1"
+                                BorderBrush="Black"
+                                CornerRadius="10 0 10 0"
+                                Padding="10">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="FontWeight" Value="Heavy"/>
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     
     <Style x:Key="StyleButtonNew" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleButtonDefault}">
-        <Setter Property="Background" Value="DarkBlue"/>
+        <Style.Setters>
+            <Setter Property="Background" Value="DarkBlue"/>
+        </Style.Setters>
+        
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Blue"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style x:Key="StyleButtonSave" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleButtonDefault}">
         <Setter Property="Background" Value="DarkGreen"/>
+        
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Green"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style x:Key="StyleButtonDelete" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleButtonDefault}">
         <Setter Property="Background" Value="DarkRed"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Red"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <Style x:Key="StyleButtonClear" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleButtonDefault}">
         <Setter Property="Background" Value="DarkOrange"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="Orange"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
     <!-- #endregion BUTTONS -->
     
