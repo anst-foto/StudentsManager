@@ -35,7 +35,7 @@
            BasedOn="{StaticResource StyleButtonDefault}">
         <Setter Property="Background" Value="DarkOrange"/>
     </Style>
-    <!-- #endregion -->
+    <!-- #endregion BUTTONS -->
     
     <!-- #region LABEL & INPUT -->
     <Style x:Key="StyleLabel" TargetType="{x:Type Label}"
@@ -50,5 +50,5 @@
            BasedOn="{StaticResource StyleDefault}">
         <Setter Property="Width" Value="50"/>
     </Style>
-    <!-- #endregion -->
+    <!-- #endregion LABEL & INPUT -->
 </ResourceDictionary>

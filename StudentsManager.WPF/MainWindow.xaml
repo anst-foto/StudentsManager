@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:StudentsManager.WPF"
         mc:Ignorable="d"
         Title="MainWindow" 
-        Height="450" Width="900">
+        Height="450" Width="950">
     
     <Window.Resources>
         <ResourceDictionary>
@@ -17,15 +17,30 @@
         </ResourceDictionary>
     </Window.Resources>
     
+    <Window.CommandBindings>
+        <CommandBinding Command="Close" 
+                        Executed="CommandClose"/>
+        <CommandBinding Command="Backspace" 
+                        Executed="CommandClear"
+                        CanExecute="CommandClear_CanExecute"/>
+    </Window.CommandBindings>
+    
+    <Window.InputBindings>
+        <KeyBinding Key="Escape" 
+                    Command="Close"/>
+        <KeyBinding Modifiers="Shift" Key="F12" 
+                    Command="Backspace"/>
+    </Window.InputBindings>
+    
     <DockPanel LastChildFill="True">
         <Menu DockPanel.Dock="Top"
               Style="{StaticResource StyleDefault}">
-            <MenuItem Header="Выйти" />
-            <MenuItem Header="Редактирование">
-                <MenuItem Header="Добавить" />
-                <MenuItem Header="Сохранить" />
-                <MenuItem Header="Удалить" />
-                <MenuItem Header="Очистить" />
+            <MenuItem Header="_Выйти" Command="Close" />
+            <MenuItem Header="_Редактирование">
+                <MenuItem Header="_Добавить" />
+                <MenuItem Header="_Сохранить" />
+                <MenuItem Header="_Удалить" />
+                <MenuItem Header="_Очистить" Command="Backspace" />
             </MenuItem>
         </Menu>
 
@@ -45,7 +60,7 @@
                         Orientation="Vertical">
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Фамилия"
+                        <Label Content="_Фамилия"
                                Target="InputLastName"
                                Style="{StaticResource StyleLabel}"/>
                         <TextBox x:Name="InputLastName"
@@ -53,7 +68,7 @@
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Имя"
+                        <Label Content="_Имя"
                                Target="InputFirstName"
                                Style="{StaticResource StyleLabel}"/>
                         <TextBox x:Name="InputFirstName"
@@ -61,25 +76,11 @@
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal">
-                        <Label Content="Дата рождения"
+                        <Label Content="_Дата рождения"
                                Target="InputDateOfBirth"
                                Style="{StaticResource StyleLabel}"/>
-                        <DatePicker x:Name="InputDateOfBirth">
-                            <DatePicker.Resources>
-                                <Style TargetType="{x:Type DatePickerTextBox}">
-                                    <Setter Property="Control.Template">
-                                        <Setter.Value>
-                                            <ControlTemplate>
-                                                <TextBox x:Name="PART_TextBox"
-                                                         Text="{Binding Path=SelectedDate, 
-                                                                        StringFormat='yyyy-mm-dd',
-                                                                        RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" />
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </DatePicker.Resources>
-                        </DatePicker>
+                        <DatePicker x:Name="InputDateOfBirth"
+                                    Style="{StaticResource StyleDefault}"/>
                         <TextBox x:Name="InputAge"
                                  IsEnabled="False"
                                  Style="{StaticResource StyleInputAge}"/>
@@ -124,8 +125,10 @@
                     </Button>
                     <Button Content="Удалить"
                             Style="{StaticResource StyleButtonDelete}"></Button>
-                    <Button Content="Очистить"
-                            Style="{StaticResource StyleButtonClear}"></Button>
+                    <Button x:Name="ButtonClear"
+                            Content="Очистить"
+                            Style="{StaticResource StyleButtonClear}"
+                            Command="Backspace"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
