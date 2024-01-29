@@ -2,23 +2,23 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!-- DEFAULT -->
     <Style x:Key="StyleDefault" TargetType="{x:Type Control}">
-        <Setter Property="FontSize" Value="16"/>
-        
-        <Setter Property="Margin" Value="10"/>
-        <Setter Property="Padding" Value="5"/>
+        <Setter Property="FontSize" Value="16" />
+
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Padding" Value="5" />
     </Style>
-    
+
     <Style x:Key="StyleMarginLeftRight" TargetType="{x:Type Control}">
-        <Setter Property="Margin" Value="10, 0"/>
+        <Setter Property="Margin" Value="10, 0" />
     </Style>
-    
+
     <!-- #region BUTTONS -->
     <Style x:Key="StyleButtonDefault" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleDefault}">
         <Style.Setters>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="Width" Value="150"/>
-            
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Width" Value="150" />
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -28,75 +28,113 @@
                                 CornerRadius="10 0 10 0"
                                 Padding="10">
                             <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"/>
+                                              VerticalAlignment="Center" />
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style.Setters>
-        
+
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="FontWeight" Value="Heavy"/>
-                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="FontWeight" Value="Heavy" />
+                <Setter Property="Cursor" Value="Hand" />
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style x:Key="StyleButtonNew" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleButtonDefault}">
         <Style.Setters>
-            <Setter Property="Background" Value="DarkBlue"/>
+            <Setter Property="Background" Value="DarkBlue" />
         </Style.Setters>
-        
+
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Blue"/>
+                <Setter Property="Background" Value="Blue" />
             </Trigger>
         </Style.Triggers>
     </Style>
     <Style x:Key="StyleButtonSave" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleButtonDefault}">
-        <Setter Property="Background" Value="DarkGreen"/>
-        
+        <Setter Property="Background" Value="DarkGreen" />
+
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Green"/>
+                <Setter Property="Background" Value="Green" />
             </Trigger>
         </Style.Triggers>
     </Style>
     <Style x:Key="StyleButtonDelete" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleButtonDefault}">
-        <Setter Property="Background" Value="DarkRed"/>
+        <Setter Property="Background" Value="DarkRed" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Red"/>
+                <Setter Property="Background" Value="Red" />
             </Trigger>
         </Style.Triggers>
     </Style>
     <Style x:Key="StyleButtonClear" TargetType="{x:Type Button}"
            BasedOn="{StaticResource StyleButtonDefault}">
-        <Setter Property="Background" Value="DarkOrange"/>
+        <Setter Property="Background" Value="DarkOrange" />
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="Orange"/>
+                <Setter Property="Background" Value="Orange" />
             </Trigger>
         </Style.Triggers>
     </Style>
     <!-- #endregion BUTTONS -->
-    
+
     <!-- #region LABEL & INPUT -->
     <Style x:Key="StyleLabel" TargetType="{x:Type Label}"
            BasedOn="{StaticResource StyleDefault}">
-        <Setter Property="Width" Value="125"/>
+        <Setter Property="Width" Value="125" />
     </Style>
     <Style x:Key="StyleInput" TargetType="{x:Type TextBox}"
            BasedOn="{StaticResource StyleDefault}">
-        <Setter Property="Width" Value="300"/>
+        <Setter Property="Width" Value="300" />
     </Style>
-    <Style x:Key="StyleInputAge" TargetType="{x:Type TextBox}"
-           BasedOn="{StaticResource StyleDefault}">
-        <Setter Property="Width" Value="50"/>
+
+    <!-- #region NEW STYLE -->
+    <!-- Добавление общего стиля для Input TextBox -->
+    <Style x:Key="StyleInputRound" TargetType="{x:Type TextBox}"
+           BasedOn="{StaticResource StyleInput}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderThickness="1"
+                            BorderBrush="LightSteelBlue"
+                            CornerRadius="5">
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
+    <Style x:Key="StyleInputAgeRound" TargetType="{x:Type TextBox}"
+           BasedOn="{StaticResource StyleInputRound}">
+        <Setter Property="Width" Value="50" />
+    </Style>
+    <!-- #endregion NEW STYLE -->
+    <!--
+        Попытка добавить скругление для DatePicker InputDateOfBirth. 
+        (форма сплющивается влево при наследовании от StyleDefault)
+        
+                <Style x:Key="StyleInputDateOfBirthRound" TargetType="{x:Type DatePicker}"
+                   BasedOn="{StaticResource StyleDefault}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type DatePicker}">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderThickness="1"
+                                    BorderBrush="LightSteelBlue"
+                                    CornerRadius="5">
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+    -->
+
     <!-- #endregion LABEL & INPUT -->
 </ResourceDictionary>
