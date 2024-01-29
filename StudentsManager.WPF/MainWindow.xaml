@@ -64,7 +64,7 @@
                                Target="InputLastName"
                                Style="{StaticResource StyleLabel}"/>
                         <TextBox x:Name="InputLastName"
-                                 Style="{StaticResource StyleInput}"/>
+                                 Style="{StaticResource StyleInputRound}"/>
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal">
@@ -72,7 +72,7 @@
                                Target="InputFirstName"
                                Style="{StaticResource StyleLabel}"/>
                         <TextBox x:Name="InputFirstName"
-                                 Style="{StaticResource StyleInput}"/>
+                                 Style="{StaticResource StyleInputRound}"/>
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal">
@@ -83,7 +83,7 @@
                                     Style="{StaticResource StyleDefault}"/>
                         <TextBox x:Name="InputAge"
                                  IsEnabled="False"
-                                 Style="{StaticResource StyleInputAge}"/>
+                                 Style="{StaticResource StyleInputAgeRound}"/>
                     </StackPanel>
                     
                     <StackPanel Orientation="Horizontal">
@@ -91,7 +91,7 @@
                                Target="InputFaculty"
                                Style="{StaticResource StyleLabel}"/>
                         <TextBox x:Name="InputFaculty"
-                                 Style="{StaticResource StyleInput}"/>
+                                 Style="{StaticResource StyleInputRound}"/>
                     </StackPanel>
                 </StackPanel>
                 
