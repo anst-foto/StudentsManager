@@ -23,6 +23,9 @@
         <CommandBinding Command="Backspace" 
                         Executed="CommandClear"
                         CanExecute="CommandClear_CanExecute"/>
+        <CommandBinding Command="Delete"
+                        CanExecute="CommandDelete_CanExecute"
+                        Executed="CommandDelete"/>
     </Window.CommandBindings>
     
     <Window.InputBindings>
@@ -30,6 +33,8 @@
                     Command="Close"/>
         <KeyBinding Modifiers="Shift" Key="F12" 
                     Command="Backspace"/>
+        <KeyBinding Modifiers="Shift" Key="Delete"
+                    Command="Delete"/>
     </Window.InputBindings>
     
     <DockPanel LastChildFill="True">
@@ -39,7 +44,8 @@
             <MenuItem Header="_Редактирование">
                 <MenuItem Header="_Добавить" />
                 <MenuItem Header="_Сохранить" />
-                <MenuItem Header="_Удалить" />
+                <MenuItem Header="_Удалить" Command="Delete" 
+                          InputGestureText="Shift+Delete"/>
                 <MenuItem Header="_Очистить" Command="Backspace" />
             </MenuItem>
         </Menu>
@@ -53,12 +59,18 @@
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
             
-            <ListBox Grid.Column="0"
-                     Style="{StaticResource StyleDefault}"></ListBox>
+            <ListBox x:Name="ListOfStudents" 
+                     Grid.Column="0"
+                     Style="{StaticResource StyleDefault}"
+                     SelectionChanged="ListOfStudents_OnSelectionChanged"/>
             
             <StackPanel Grid.Column="1"
                         Orientation="Vertical">
                 <StackPanel Orientation="Vertical">
+                    <StackPanel>
+                        <TextBox x:Name="InputId"
+                                 Visibility="Hidden"/>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="_Фамилия"
                                Target="InputLastName"
@@ -145,8 +157,10 @@
                                             Style="{StaticResource StyleMarginLeftRight}"/>
                         </Grid>
                     </Button>
-                    <Button Content="Удалить"
-                            Style="{StaticResource StyleButtonDelete}"></Button>
+                    <Button x:Name="ButtonDelete"
+                            Content="Удалить"
+                            Style="{StaticResource StyleButtonDelete}"
+                            Command="Delete"/>
                     <Button x:Name="ButtonClear"
                             Content="Очистить"
                             Style="{StaticResource StyleButtonClear}"
