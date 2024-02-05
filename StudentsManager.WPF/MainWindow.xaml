@@ -26,6 +26,8 @@
         <CommandBinding Command="Delete"
                         CanExecute="CommandDelete_CanExecute"
                         Executed="CommandDelete"/>
+        <CommandBinding Command="Save"
+                        Executed="CommandSave"/>
     </Window.CommandBindings>
     
     <Window.InputBindings>
@@ -42,8 +44,7 @@
               Style="{StaticResource StyleDefault}">
             <MenuItem Header="_Выйти" Command="Close" />
             <MenuItem Header="_Редактирование">
-                <MenuItem Header="_Добавить" />
-                <MenuItem Header="_Сохранить" />
+                <MenuItem Header="_Сохранить" Command="Save" />
                 <MenuItem Header="_Удалить" Command="Delete" 
                           InputGestureText="Shift+Delete"/>
                 <MenuItem Header="_Очистить" Command="Backspace" />
@@ -51,7 +52,11 @@
         </Menu>
 
         <ToolBar DockPanel.Dock="Top"
-                 Style="{StaticResource StyleDefault}"></ToolBar>
+                 Style="{StaticResource StyleDefault}">
+            <Button Command="Save" Width="36">
+                <Image Source="Icons/icon_button_new.png"/>
+            </Button>
+        </ToolBar>
         
         <Grid>
             <Grid.ColumnDefinitions>
@@ -108,7 +113,7 @@
                 </StackPanel>
                 
                 <StackPanel Orientation="Horizontal">
-                    <Button Style="{StaticResource StyleButtonNew}">
+                    <!--<Button Style="{StaticResource StyleButtonNew}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="24"/>
@@ -121,21 +126,12 @@
                                             Content="Добавить"
                                             Style="{StaticResource StyleMarginLeftRight}"/>
                         </Grid>
-                    </Button>
-                    <Button>
+                    </Button>-->
+                    <Button Command="Save">
                         <Button.Resources>
                             <Style TargetType="{x:Type Button}"
                                    BasedOn="{StaticResource StyleButtonSave}">
                                 <Style.Triggers>
-                                    <!--<MultiDataTrigger>
-                                        <MultiDataTrigger.Conditions>
-                                            <Condition Binding="{Binding ElementName=InputLastName, Path=Text}" Value=""/>
-                                            <Condition Binding="{Binding ElementName=InputFirstName, Path=Text}" Value=""/>
-                                        </MultiDataTrigger.Conditions>
-                                        <MultiDataTrigger.Setters>
-                                            <Setter Property="IsEnabled" Value="False"/>
-                                        </MultiDataTrigger.Setters>
-                                    </MultiDataTrigger>-->
                                     <DataTrigger Binding="{Binding ElementName=InputLastName, Path=Text}" Value="">
                                         <Setter Property="IsEnabled" Value="False"/>
                                     </DataTrigger>

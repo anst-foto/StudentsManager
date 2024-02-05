@@ -49,12 +49,6 @@ public partial class MainWindow : Window
     }
     private void CommandClear(object sender, RoutedEventArgs e)
     {
-        /*MessageBox.Show(
-            owner:this,
-            messageBoxText:(sender as Button)?.Name,
-            caption:"1");
-        MessageBox.Show(this, (e.Source as Button)?.Name, "2");
-        MessageBox.Show(this, e.RoutedEvent.Name , "3");*/
         ClearInputs();
     }
 
@@ -75,8 +69,23 @@ public partial class MainWindow : Window
         
         _students.Remove(_selectedStudent);
         
-        //ListOfStudents.ItemsSource.Cast<string>().ToList().Remove(_selectedStudent.FullName);
         ListOfStudents.ItemsSource = _students.Select(s => s.FullName);
+    }
+    
+    private void CommandSave(object sender, ExecutedRoutedEventArgs e)
+    {
+        if (string.IsNullOrWhiteSpace(InputId.Text))
+        {
+            NewStudent();
+        }
+        else
+        {
+            UpdateStudent();
+        }
+        
+        ListOfStudents.ItemsSource = _students.Select(s => s.FullName);
+        
+        ClearInputs();
     }
 
     private void ListOfStudents_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -105,5 +114,24 @@ public partial class MainWindow : Window
         InputFaculty.Clear();
         InputAge.Clear();
         InputId.Clear();
+    }
+
+    private void UpdateStudent()
+    {
+        _selectedStudent.LastName = InputLastName.Text;
+        _selectedStudent.FirstName = InputFirstName.Text;
+        _selectedStudent.DateOfBirth = InputDateOfBirth.SelectedDate!.Value;
+        _selectedStudent.Faculty = InputFaculty.Text;
+    }
+
+    private void NewStudent()
+    {
+        _students.Add(new Student()
+        {
+            LastName = InputLastName.Text,
+            FirstName = InputFirstName.Text,
+            DateOfBirth = InputDateOfBirth.SelectedDate!.Value,
+            Faculty = InputFaculty.Text
+        });
     }
 }
